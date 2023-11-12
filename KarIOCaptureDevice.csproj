@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>KarIOCaptureDevice</RootNamespace>
+    <AssemblyName>KarIOCaptureDevice</AssemblyName>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>11</LangVersion>
+    <Copyright>Copyright ©  2023</Copyright>
+    <Product>KarIOCaptureDevice</Product>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResonitePath>$(MSBuildThisFileDirectory)Resonite\</ResonitePath>
+    <ResonitePath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\Resonite\')">C:\Program Files (x86)\Steam\steamapps\common\Resonite\</ResonitePath>
+    <ResonitePath Condition="Exists('$(HOME)/.steam/steam/steamapps/common/Resonite/')">$(HOME)/.steam/steam/steamapps/common/Resonite/</ResonitePath>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BitMiracle.LibJpeg.NET" Version="1.5.324" />
+    <PackageReference Include="FlashCap" Version="1.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Elements.Core">
+      <HintPath>$(ResonitePath)Resonite_Data/Managed/Elements.Core.dll</HintPath>
+    </Reference>
+	<Reference Include="Elements.Assets">
+	  <HintPath>$(ResonitePath)Resonite_Data/Managed/Elements.Assets.dll</HintPath>
+	</Reference>
+    <Reference Include="FrooxEngine">
+      <HintPath>$(ResonitePath)Resonite_Data/Managed/FrooxEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+	<Target Name="CopyDLLs" AfterTargets="Build">
+		<Message Text="Copying Mod To Resonite Libs Folder" Importance="High" />
+
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)$(ProjectName).pdb" DestinationFolder="$(ResonitePath)/Libraries" />
+
+		<Message Text="Copied Mod!" Importance="High" />
+	</Target>
+</Project>
