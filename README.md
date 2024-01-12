@@ -1,7 +1,7 @@
 # KarIO.CaptureDevice
 Implements the [FlashCap](https://github.com/kekyo/FlashCap/tree/main) library as a procedural texture in [Resonite](https://resonite.com/).
 
-Currently slow and extremely buggy, but functions. For instance, Capture Device names do not get shown correctly most of the time. DirectShow support does not work, so it uses Video For Windows, which requires desktop interaction. Sometimes the component just plain fails to initialize. Only runs at about 5fps, and defaults to 1080p for testing purposes. Likely to break on a non-MJPEG stream. Completely untested on Linux. There are also a few QOL todos, but this plugin is only a proof of concept at the moment, and will likely remain as such.
+Currently slow and extremely buggy, but functions. Most of the following issues are things I cannot test, or issues so odd that I have no idea why they could be happening. Capture Device names do not get shown correctly most of the time. DirectShow support does not work, so it uses Video For Windows, which requires desktop interaction. Sometimes the component just plain fails to initialize. Only manages to present at about 5fps at the default resolution, 1080p, chosen for development purposes. Resolution needs to be changed on the component manually. Likely to break on a non-MJPEG stream, or an MJPEG stream that has Huffman Tables. Completely untested on Linux. There are also a few QoL todos, but this plugin is only a proof of concept at the moment, and will likely remain as such.
 
 # Credits
 
